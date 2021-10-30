@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class PlayerModel {
     @BsonIgnore
@@ -35,11 +34,12 @@ public class PlayerModel {
     }
 
     public static PlayerModel create(UUID uuid) {
-        AtomicReference<PlayerModel> pm = new AtomicReference<>(load(uuid));
+        PlayerModel pm = load(uuid);
 
-        if (pm.get() == null) {
-            pm.set(new PlayerModel());
-            pm.get().id = uuid;
+        if (pm == null) {
+            pm = new PlayerModel();
+            pm.id = uuid;
+            PlayerModel finalPm = pm;
             Quest.QUESTS.forEach(
                     quest -> {
                         QuestModel questModel = new QuestModel();
@@ -47,14 +47,16 @@ public class PlayerModel {
                         questModel.progress = 0;
                         questModel.status = QuestProgress.ProgressType.PENDING;
 
-                        pm.get().quests.add(questModel);
+                        finalPm.quests.add(questModel);
                     }
             );
 
-            PLAYER_MODELS.add(pm.get());
+            QuestPlugin.getInstance().database.playerModelCollection.insertOne(pm);
+
+            PLAYER_MODELS.add(pm);
         }
 
-        return pm.get();
+        return pm;
     }
 
     public static PlayerModel load(Player player) {
