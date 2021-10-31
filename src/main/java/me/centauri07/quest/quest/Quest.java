@@ -3,7 +3,7 @@ package me.centauri07.quest.quest;
 import me.centauri07.quest.QuestPlugin;
 import me.centauri07.quest.configuration.models.ItemStackModel;
 import me.centauri07.quest.configuration.models.QuestModel;
-import me.centauri07.quest.database.model.PlayerModel;
+import me.centauri07.quest.database.models.PlayerModel;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

@@ -1,6 +1,6 @@
 package me.centauri07.quest.quest;
 
-import me.centauri07.quest.database.model.PlayerModel;
+import me.centauri07.quest.database.models.PlayerModel;
 import org.bukkit.entity.Player;
 
 public class QuestProgress {

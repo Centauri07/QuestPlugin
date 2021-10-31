@@ -1,4 +1,4 @@
-package me.centauri07.quest.database.model;
+package me.centauri07.quest.database.models;
 
 import com.mongodb.client.model.Filters;
 import me.centauri07.quest.QuestPlugin;

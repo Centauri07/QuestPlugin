@@ -8,7 +8,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import me.centauri07.quest.QuestPlugin;
-import me.centauri07.quest.database.model.PlayerModel;
+import me.centauri07.quest.database.models.PlayerModel;
 import org.bson.UuidRepresentation;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.pojo.PojoCodecProvider;
